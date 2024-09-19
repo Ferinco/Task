@@ -22,7 +22,7 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(error.message || "Login failed");
       }
       const data = await response.json();
-      console.log(data); 
+      console.log(data);
       return data;
     } catch (error) {
       console.error("Network Error:", error);
@@ -31,6 +31,44 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+//thunk to initialize token check/ cached user
+export const initializeAuth = createAsyncThunk(
+  "auth/initializeAuth",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const response = fetch("https://dummyjson.com/auth/me", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          // credentials: 'include'
+        });
+        console.log(response);
+        return {
+          isAuthenticated: true,
+          user: data.user,
+          role: data.user.role,
+          storedToken: token,
+        };
+      } else {
+        return {
+          isAuthenticated: false,
+          user: null,
+          role: null,
+        };
+      }
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue({
+        isAuthenticated: false,
+        user: null,
+        role: null,
+      });
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -44,6 +82,22 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(initializeAuth.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(initializeAuth.fulfilled, (state, action) => {
+        state.isAuthenticated = true
+        state.user = action.payload;
+        state.isLoading = false;
+        state.error = null;
+
+      })
+      .addCase(initializeAuth.rejected, (state) => {
+        state.isAuthenticated = false;
+        state.user = null;
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;

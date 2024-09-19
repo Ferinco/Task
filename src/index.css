@@ -10,6 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
   background: white;
   color: black;
+  overflow: hidden !important;
 }
 .text-shadow-custom {
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
