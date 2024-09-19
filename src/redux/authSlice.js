@@ -10,22 +10,27 @@ const initialState = {
 //thunk for user login
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ username, password }, { rejectWithValue }) => {
     try {
       const response = await fetch("https://dummyjson.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
-      console.log(response);
+      if (!response.ok) {
+        const error = await response.json();
+        return rejectWithValue(error.message || "Login failed");
+      }
       const data = await response.json();
+      console.log(data); 
       return data;
-      //   localStorage.setItem('token', data.token);
     } catch (error) {
+      console.error("Network Error:", error);
       return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
+
 
 const authSlice = createSlice({
   name: "auth",

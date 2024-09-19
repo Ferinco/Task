@@ -1,28 +1,31 @@
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { FormInput } from "../components/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { useState } from "react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-const dispatch = useDispatch()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const error = useSelector((state) => state.auth.error);
+  console.log(error)
 
-const handleLogin = async(e) => {
-  e.preventDefault()
-  try{
-    const response = await dispatch(
-      loginUser({
-email, password
-      })
-    )
-  }
-  catch(error){
-  }
-}
-
+  // function that dispatches the login action
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await dispatch(
+        loginUser({
+          username,
+          password,
+        })
+      );
+    } catch (error) {
+    }
+  };
 
   return (
     <div className="grid grid-cols-12 h-screen w-screen">
@@ -34,37 +37,45 @@ email, password
           Login into your account
         </p>
         <form onSubmit={handleLogin}>
-        <div className="flex flex-col gap-4 mt-8">
-        <FormInput
-          placeholder="info@pearmonie.test"
-          name="email"
-          type="email"
-          label="Email Id:"
-          icon="/images/mail-icon.png"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <FormInput
-          placeholder="Enter your password"
-          name="password"
-          type="password"
-          label="Password:"
-          icon="/images/password-icon.png"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <a className="text-custom-blue underline text-sm font-normal flex self-end" href="/">
-          Forgot password?
-        </a>
-        </div>
-        <div className="flex flex-col mt-7">
-        <Button deep title="Login now" full type="submit" disabled={false}/>
-        <div className="flex flex-col relative items-center my-8">
-          <div className="w-full line border-t border-black/25 shadow-custom"></div>
-          <p className="text-black/25 font-light text-sm text-shadow-custom w-fit px-4 absolute -mt-[9px] bg-white">
-            OR
-          </p>
-        </div>
-        <Button title="Signup now" full type="button"/>
-        </div>
+          <div className="flex flex-col gap-4 mt-8">
+            <FormInput
+              placeholder="info@pearmonie.test"
+              name="email"
+              label="Email Id:"
+              icon="/images/mail-icon.png"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <FormInput
+              placeholder="Enter your password"
+              name="password"
+              type="password"
+              label="Password:"
+              icon="/images/password-icon.png"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <a
+              className="text-custom-blue underline text-sm font-normal flex self-end"
+              href="/"
+            >
+              Forgot password?
+            </a>
+          </div>
+          <div className="flex flex-col mt-7">
+            <Button
+              deep
+              title="Login now"
+              full
+              type="submit"
+              disabled={isLoading}
+            />
+            <div className="flex flex-col relative items-center my-8">
+              <div className="w-full line border-t border-black/25 shadow-custom"></div>
+              <p className="text-black/25 font-light text-sm text-shadow-custom w-fit px-4 absolute -mt-[9px] bg-white">
+                OR
+              </p>
+            </div>
+            <Button title="Signup now" full type="button" />
+          </div>
         </form>
       </div>
     </div>
