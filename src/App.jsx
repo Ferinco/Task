@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import LoginPage from "./pages/login";
+import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import DashboardLayout from "./layouts/DashboardLayout";
-import Dashboard from "./pages/dashboard";
 import { initializeAuth } from "./redux/authSlice";
+
+//lazy lode components for code splitting
+const Login = lazy(() => import("./pages/login"));
+const DashboardLayout = lazy(() => import("./layouts/DashboardLayout"));
+const Dashboard = lazy(() => import("./pages/dashboard"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -14,23 +16,26 @@ export default function App() {
   }, [dispatch]);
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            isAuthenticated === false ? (
-              <LoginPage />
-            ) : (
-              <Navigate to="/dashboard" />
-            )
-          }
-        />
-        {isAuthenticated && (
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route path="" element={<Dashboard />} />
-          </Route>
-        )}
-      </Routes>
+      <Suspense fallback={<div>...loading</div>}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isAuthenticated === false ? (
+                <Login />
+              ) : (
+                <Navigate to="/dashboard" />
+              )
+            }
+          />
+          {isAuthenticated && (
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route path="" element={<Dashboard />} />
+            </Route>
+          )}
+          <Route path="*" element={<Navigate to="/" />} />{" "}
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

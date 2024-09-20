@@ -19,3 +19,12 @@ export const FormInput = (props) => {
     </div>
   );
 };
+
+export const SearchInput = () => {
+  return (
+    <div className="flex gap-2 p-3 items-center rounded-lg h-10 w-56 overflow-hidden bg-white">
+      <img src="/images/search-icon.png" className="w-6 h-6" />
+      <input placeholder="Search" className="placeholder:text-sm placeholder:text-[#b5b7c0] outline-none"/>
+    </div>
+  );
+};

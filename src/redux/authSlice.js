@@ -22,6 +22,7 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(error.message || "Login failed");
       }
       const data = await response.json();
+      localStorage.setItem("token", data.token);
       console.log(data);
       return data;
     } catch (error) {
@@ -31,32 +32,36 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-//thunk to initialize token check/ cached user
+//thunk to initialize token check or cached user
 export const initializeAuth = createAsyncThunk(
   "auth/initializeAuth",
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = fetch("https://dummyjson.com/auth/me", {
+        const response = await fetch("https://dummyjson.com/auth/me", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          // credentials: 'include'
         });
-        console.log(response);
+
+        if (!response.ok) {
+          const error = await response.json();
+          return rejectWithValue(error.message || "Failed to fetch user info");
+        }
+
+        const data = await response.json();
+        console.log(data);
+
         return {
           isAuthenticated: true,
-          user: data.user,
-          role: data.user.role,
-          storedToken: token,
+          user: data,
         };
       } else {
         return {
           isAuthenticated: false,
           user: null,
-          role: null,
         };
       }
     } catch (error) {
@@ -64,11 +69,11 @@ export const initializeAuth = createAsyncThunk(
       return rejectWithValue({
         isAuthenticated: false,
         user: null,
-        role: null,
       });
     }
   }
 );
+
 
 const authSlice = createSlice({
   name: "auth",
@@ -83,20 +88,18 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(initializeAuth.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(initializeAuth.fulfilled, (state, action) => {
-        state.isAuthenticated = true
-        state.user = action.payload;
-        state.isLoading = false;
-        state.error = null;
+        state.isLoading = true;
+        state.isAuthenticated = true;
 
       })
-      .addCase(initializeAuth.rejected, (state) => {
-        state.isAuthenticated = false;
-        state.user = null;
+      .addCase(initializeAuth.fulfilled, (state, action) => {
+        state.isAuthenticated = action.payload.isAuthenticated;
+        state.user = action.payload.user;
         state.isLoading = false;
-        state.error = null;
+      })
+      .addCase(initializeAuth.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isAuthenticated = false;
       })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
