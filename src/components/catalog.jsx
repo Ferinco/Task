@@ -20,16 +20,41 @@ export default function Catalog() {
     },
   ];
   return (
-    <div className="border border-white bg-white h-32 w-full rounded-3xl flex justify-between items-center px-9">
+    <div className="border border-white bg-white h-auto w-full rounded-3xl grid sm:grid-cols-3 gap-7 sm:gap-0 items-center p-5 sm:p-9">
       {data.map((datum, index) => (
-        <div className="flex gap-2 items-center" key={index}>
+        <div
+          className={`flex sm:flex-col lg:flex-row gap-5 items-center lg:items-start justify-start justify-self-start lg:justify-self-auto ${
+            index === 1
+              ? "justify-center lg:border-r lg:border-l sm:justify-self-center lg:justify-self-auto"
+              : index === 2
+              ? "justify-center sm:justify-self-end lg:justify-self-auto"
+              : ""
+          }`}
+          key={index}
+        >
           <div className="icon-div h-16 aspect-square bg-gradient-to-b from-[#d3ffe7] to-[#effff6] rounded-full flex justify-center items-center">
-            <img src={datum.icon}/>
+            <img src={datum.icon} className="w-3/6 h-3/6 object-contain object-center"/>
           </div>
-          <div className="flex flex-col leading-8">
-            <p className="text-sm font-normal text-[#acacac] capitalize">{datum.title}</p>
-            <h3 className="font-semibold text-[32px] text-[#333333]">{datum.figure}</h3>
-            <span className="text-xs text-[#292d32]">this month</span>
+          <div className="flex flex-col items-center lg:items-start leading-8">
+            <p className="text-sm font-normal text-[#acacac] capitalize">
+              {datum.title}
+            </p>
+            <h3 className="font-semibold text-3xl lg:text-[32px] text-[#333333]">
+              {datum.figure}
+            </h3>
+            {datum.increase === true ? (
+              <div className="text-xs text-[#292d32] flex items-center absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0"><img src="/images/green-arrow.png"/><span className="font-bold text-xs text-[#00ac4f] mr-1 ml-1">16%</span> this month</div>
+            ) : datum.increase === false ? (
+              <div className="text-xs text-[#292d32] flex items-center absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0"><img src="/images/red-arrow.png"/><span className="font-bold text-xs text-[#d0004b] mr-1 ml-1">1%</span> this month</div>
+            ) : (
+              <div className="flex absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0">
+                {
+                    [...Array(5)].map((active, index)=> (
+                       <img src={`images/active-${index+1}.png`} key={index} className={index != 0 && "-ml-2"}/> 
+                    ))
+                }
+              </div>
+            )}
           </div>
         </div>
       ))}

@@ -6,7 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      // the custom shadow from the UI design
+      screens: {
+        'xs': '480px', // Custom width for xs screen size
+      },
       boxShadow: {
         'custom': '0 4px 4px rgba(0, 0, 0, 0.25)',
       },

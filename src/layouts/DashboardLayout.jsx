@@ -1,18 +1,20 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar";
-import DashboardTopBar from "../components/TopBar";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { initializeAuth } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
 
-export default function DashboardLayout(){
-  const user = useSelector((state)=> state.auth.user)
-console.log(user)
-// bg-[#fafbff]
-    return (
-        <div className="flex ml-[9px] bg-black">
-          <Sidebar user={user}/>
-          <div className="lg:w-[calc(100vw-306px)] px-10 py-5 mx-auto">
-            <Outlet/>
-          </div>
-        </div>
-      );
+export default function DashboardLayout() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(initializeAuth());
+  }, [dispatch]);
+  return (
+    <div className="flex sm:ml-[9px] bg-[#fafbff]">
+      <Sidebar/>
+      <div className="w-full sm:w-[calc(100vw-100px)] xl:w-[calc(100vw-306px)] px-5 sm:px-10 py-5 ml-auto left-0 min-h-screen">
+        <Outlet />
+      </div>
+    </div>
+  );
 }

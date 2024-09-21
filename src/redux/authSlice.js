@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Navigate } from "react-router-dom";
 
 const initialState = {
   isAuthenticated: false,
@@ -87,7 +88,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(initializeAuth.pending, (state, action) => {
+      .addCase(initializeAuth.pending, (state) => {
         state.isLoading = true;
         state.isAuthenticated = true;
 

@@ -22,9 +22,9 @@ export const FormInput = (props) => {
 
 export const SearchInput = (props) => {
   return (
-    <div className={`flex gap-2 p-3 items-center rounded-lg h-10 w-56 overflow-hidden ${props.styles}`}>
+    <div className={`flex gap-2 p-3 items-center rounded-lg h-10 shrink-0 w-52 overflow-hidden ${props.styles}`}>
       <img src="/images/search-icon.png" className="w-6 h-6" />
-      <input placeholder="Search" className="placeholder:text-sm placeholder:text-[#b5b7c0] outline-none bg-transparent"/>
+      <input placeholder="Search" className={`${props.size} placeholder:text-[#b5b7c0] outline-none bg-transparent`}/>
     </div>
   );
 };
