@@ -9,21 +9,20 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.auth.isLoading);
-  const error = useSelector((state) => state.auth.error);
-  console.log(error)
+  const {isLoading, error} = useSelector((state) => state.auth);
 
   // function that dispatches the login action
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await dispatch(
+    if (username && password) {
+      dispatch(
         loginUser({
           username,
           password,
         })
       );
-    } catch (error) {
+    } else {
+      alert("Please fill in both fields");
     }
   };
 

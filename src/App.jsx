@@ -10,7 +10,7 @@ const Dashboard = lazy(() => import("./pages/dashboard"));
 
 export default function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const {isAuthenticated} = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(initializeAuth());
   }, [dispatch]);
