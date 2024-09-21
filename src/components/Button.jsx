@@ -37,7 +37,7 @@ export const StatusButton = (props) => {
 
 export const PaginatorButton = (props) => {
   return(
-  <button className={`rounded-[4px] border w-6 h-6 text-xs font-medium ${props.active ? "bg-[#5932ea] text-white border-[#5932ea]" : "bg-[#f5f5f5] text-[#404b52] border-[#eeeeee]"}`}>
+  <button className={`rounded-[4px] border w-6 h-6 text-xs font-medium ${props.active ? "bg-[#5932ea] text-white border-[#5932ea]" : "bg-[#f5f5f5] text-[#404b52] border-[#eeeeee]"}`} key={props.key} onClick={props.onClick}>
 {props.tag}
   </button>
   )

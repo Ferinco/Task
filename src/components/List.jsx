@@ -5,18 +5,22 @@ import { SearchInput } from "./Input";
 import { PaginatorButton, StatusButton } from "./Button";
 
 export default function ListBox() {
+  const [active, setActive] = useState(0);
   const dispatch = useDispatch();
-  const { users, isLoading, limit, total } = useSelector((state) => state.users);
-  const [pages, setPages] = useState(0)
+  const { users, isLoading, limit, total, skip, pages } = useSelector(
+    (state) => state.users
+  );
+
+  //fetch the first 8 user data
   useEffect(() => {
-    dispatch(fetchAllUsers());
-    const getNumberOfPages =()=> {
-        const number = Math.floor(total/limit)
-        setPages(number)
-    }
-    getNumberOfPages()
+    dispatch(fetchAllUsers({ limit: 8, skip: 0 }));
   }, [dispatch]);
-console.log(pages)
+
+  //
+  const paginateData = (skipping) => {
+    dispatch(fetchAllUsers({ limit: 8, skip: skipping }));
+  };
+
   const tableHeaders = [
     "UsersName",
     "Company",
@@ -26,7 +30,7 @@ console.log(pages)
     "Status",
   ];
 
-  console.log(users);
+  console.log(pages);
   return (
     <div className="bg-white border border-white w-full grow rounded-3xl overflow-hidden flex flex-col">
       <div className="flex p-3">
@@ -74,13 +78,37 @@ console.log(pages)
           Showing data 1 to 8 of 256k entries
         </p>
         <div className="flex gap-2">
-<PaginatorButton tag="<"/>
-{
-    [...Array(pages)].map((page, index)=> (
-<PaginatorButton tag={index + 1} active={index === 0}/>
-    ))
-}
-<PaginatorButton tag=">"/>
+          <PaginatorButton
+            tag="<"
+            onClick={() => {
+              if (skip > 0) {
+                paginateData(skip - limit);
+                setActive(Math.floor((skip - limit) / limit));
+              }
+            }}
+          />
+
+          {[...Array(pages)].map((page, index) => (
+            <PaginatorButton
+              tag={index + 1}
+              active={index === active}
+              key={index}
+              onClick={() => {
+                paginateData(index * limit);
+                setActive(index);
+              }}
+            />
+          ))}
+
+          <PaginatorButton
+            tag=">"
+            onClick={() => {
+              if (skip + limit < total) {
+                paginateData(skip + limit);
+                setActive(Math.floor((skip + limit) / limit));
+              }
+            }}
+          />
         </div>
       </div>
     </div>
