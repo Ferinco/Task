@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(error.message || "Login failed");
       }
       const data = await response.json();
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.accessToken);
       console.log(data);
       return data;
     } catch (error) {

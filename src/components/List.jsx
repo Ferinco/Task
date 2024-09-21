@@ -33,7 +33,7 @@ export default function ListBox() {
 
   console.log(pages);
   return (
-    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 md:gap-5 p-4">
+    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 md:gap-5 p-4 sm:p-6 2xl:p-9">
       <div className="flex flex-col md:flex-row md:items-center gap-3">
         <div>
           <p className="text-black font-semibold text-[22px]">All Users</p>
@@ -44,8 +44,8 @@ export default function ListBox() {
         <SelectField/>
         </div>
       </div>
-      <div className="overflow-x-auto">
-      <table className="w-full relative min-w-[1100px] md:min-w-[920px]">
+      <div className="overflow-x-auto lg:overflow-x-hidden">
+      <table className="w-full relative min-w-[1100px]  md:min-w-[920px]">
         <thead className="">
           <tr className="text-left">
             {tableHeaders.map((header, index) => (
@@ -77,7 +77,7 @@ export default function ListBox() {
             </tr>
           ))}
         </tbody>
-        <div className="absolute top-0  bg-transparent inset-x-0 -ml-4 -mr-4 border-b mt-6"></div>
+        <div className="absolute top-0 bg-transparent inset-x-0 -ml-4 -mr-4 border-b mt-6"></div>
       </table>
       </div>
       <div className="flex flex-col gap-4 md:flex-row items-end md:items-center md:justify-between">

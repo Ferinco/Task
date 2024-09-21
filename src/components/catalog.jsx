@@ -20,7 +20,7 @@ export default function Catalog() {
     },
   ];
   return (
-    <div className="border border-white bg-white h-auto w-full rounded-3xl grid sm:grid-cols-3 gap-7 sm:gap-0 items-center p-5 sm:p-9">
+    <div className="border border-white bg-white h-auto w-full rounded-3xl grid sm:grid-cols-3 gap-7 sm:gap-0 items-center p-4 sm:p-6 md:p-9">
       {data.map((datum, index) => (
         <div
           className={`flex sm:flex-col lg:flex-row gap-5 items-center lg:items-start justify-start justify-self-start lg:justify-self-auto ${
@@ -35,7 +35,7 @@ export default function Catalog() {
           <div className="icon-div h-16 aspect-square bg-gradient-to-b from-[#d3ffe7] to-[#effff6] rounded-full flex justify-center items-center">
             <img src={datum.icon} className="w-3/6 h-3/6 object-contain object-center"/>
           </div>
-          <div className="flex flex-col items-center lg:items-start leading-8">
+          <div className="flex flex-col items-start sm:items-center lg:items-start leading-8">
             <p className="text-sm font-normal text-[#acacac] capitalize">
               {datum.title}
             </p>
