@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -6,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 export default function Sidebar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {user, isLoading} = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
-
 
   const tabs = [
     {
@@ -28,7 +27,11 @@ export default function Sidebar() {
   };
 
   return (
-    <div className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-30 transition-all duration-150 ${isMenuOpen ? "-ml-0" : "-ml-[400px]"}`}>
+    <div
+      className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-30 transition-all duration-150 ${
+        isMenuOpen ? "-ml-0" : "-ml-[400px]"
+      }`}
+    >
       <div className="w-[250px] sm:w-full xl:w-[250px] h-full flex items-center flex-col gap-10">
         <div className="flex items-center gap-1 justify-center">
           <img
@@ -101,8 +104,8 @@ export default function Sidebar() {
             />
           </div>
           <div
-            className={`text-xs flex justify-end text-red-600 font-semibold transition-all duration-150 cursor-pointer ${
-              show ? "-mt-0 opacity-100" : "-mt-5 opacity-0"
+            className={`text-xs flex justify-center  border border-red-400 p-2 rounded-lg text-red-600 font-semibold transition-all duration-150 cursor-pointer ${
+              show ? " opacity-100 mt-4" : "-mt-5 opacity-0"
             }`}
             onClick={handleLogout}
           >
@@ -110,6 +113,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
+  
     </div>
   );
 }

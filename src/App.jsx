@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { initializeAuth } from "./redux/authSlice";
+import Preloader from "./pages/preloader";
 
 //lazy lode components for code splitting
 const Login = lazy(() => import("./pages/login"));
@@ -10,13 +11,13 @@ const Dashboard = lazy(() => import("./pages/dashboard"));
 
 export default function App() {
   const dispatch = useDispatch();
-  const {isAuthenticated} = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(initializeAuth());
   }, [dispatch]);
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>...loading</div>}>
+      <Suspense fallback={<Preloader />}>
         <Routes>
           <Route
             path="/"

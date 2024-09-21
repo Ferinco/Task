@@ -4,6 +4,7 @@ import { fetchAllUsers } from "../redux/usersSlice";
 import { SearchInput } from "./Input";
 import { PaginatorButton, StatusButton } from "./Button";
 import { SelectField } from "./Select";
+import { Loader } from "./Loader";
 
 export default function ListBox() {
   const [active, setActive] = useState(0);
@@ -33,52 +34,59 @@ export default function ListBox() {
 
   console.log(pages);
   return (
-    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 md:gap-5 p-4 sm:p-6 2xl:p-9">
+    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 p-4 sm:p-6 2xl:p-9">
       <div className="flex flex-col md:flex-row md:items-center gap-3">
         <div>
           <p className="text-black font-semibold text-[22px]">All Users</p>
           <p className="text-sm font-normal text-[#16c098]">Active Members</p>
         </div>
         <div className="md:ml-auto flex gap-3">
-        <SearchInput styles="bg-[#fafbff]"  size="placeholder:text-xs" />
-        <SelectField/>
+          <SearchInput styles="bg-[#fafbff]" size="placeholder:text-xs" />
+          <SelectField />
         </div>
       </div>
       <div className="overflow-x-auto lg:overflow-x-hidden">
-      <table className="w-full relative min-w-[1100px]  md:min-w-[920px]">
-        <thead className="">
-          <tr className="text-left">
-            {tableHeaders.map((header, index) => (
-              <th className="font-medium text-sm text-[#b5b7c0]" key={index}>
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className="p-3">
-          {users.map((user, index) => (
-            <tr
-              key={index}
-              className="text-sm font-medium text-[#292d32] border-b"
-            >
-              <td className="py-5">
-                {user.firstName} {user.lastName}
-              </td>
-              <td>{user.company.name}</td>
-              <td>{user.phone}</td>
-              <td>{user.email}</td>
-              <td>{user.address.country}</td>
-              <td>
-                {" "}
-                <StatusButton
-                  active={index === 1 || index === 2 || index === 7}
-                />
-              </td>
+        <table className="w-full relative min-w-[1100px]  md:min-w-[920px] min-h-[500px]">
+          <thead className="">
+            <tr className="text-left">
+              {tableHeaders.map((header, index) => (
+                <th className="font-medium text-sm text-[#b5b7c0]" key={index}>
+                  {header}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-        <div className="absolute top-0 bg-transparent inset-x-0 -ml-4 -mr-4 border-b mt-6"></div>
-      </table>
+          </thead>
+          {isLoading ? (
+            <div className="flex justify-center absolute grow w-full mt-[20%]">
+                <Loader />
+
+            </div>
+          ) : (
+            <tbody className="p-3">
+              {users.map((user, index) => (
+                <tr
+                  key={index}
+                  className="text-sm font-medium text-[#292d32] border-b"
+                >
+                  <td className="py-5">
+                    {user.firstName} {user.lastName}
+                  </td>
+                  <td>{user.company.name}</td>
+                  <td>{user.phone}</td>
+                  <td>{user.email}</td>
+                  <td>{user.address.country}</td>
+                  <td>
+                    {" "}
+                    <StatusButton
+                      active={index === 1 || index === 2 || index === 7}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
+          <div className="absolute top-0 bg-transparent inset-x-0 -ml-4 -mr-4 border-b mt-6"></div>
+        </table>
       </div>
       <div className="flex flex-col gap-4 md:flex-row items-end md:items-center md:justify-between">
         <p className="text-sm font-medium text-[#B5B7C0]">

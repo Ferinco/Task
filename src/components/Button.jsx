@@ -1,10 +1,10 @@
 export const Button = (props) => {
   return (
     <button
-      className={`px-5 py-2 rounded-lg border h-[50.49px] text-base font-semibold shadow-custom ${
+      className={`px-5 py-2 rounded-lg border h-[50.49px] text-base font-semibold shadow-custom transition-all duration-150 flex justify-center items-center ${
         props.deep
-          ? "bg-custom-blue text-white border-custom-blue"
-          : "bg-transparent text-custom-blue border-custom-blue"
+          ? "bg-custom-blue text-white border-custom-blue hover:bg-[#161C59]"
+          : "bg-transparent text-custom-blue border-custom-blue hover:bg-custom-blue hover:text-white"
       } ${props.full ? "w-full" : "w-fit"} ${
         props.disabled
           ? "bg-opacity-50 border-opacity-10 cursor-not-allowed"
@@ -17,7 +17,6 @@ export const Button = (props) => {
     </button>
   );
 };
-
 
 // reusable button to activate/deactivate
 export const StatusButton = (props) => {
@@ -34,11 +33,18 @@ export const StatusButton = (props) => {
   );
 };
 
-
 export const PaginatorButton = (props) => {
-  return(
-  <button className={`rounded-[4px] border w-6 h-6 text-xs font-medium ${props.active ? "bg-[#5932ea] text-white border-[#5932ea]" : "bg-[#f5f5f5] text-[#404b52] border-[#eeeeee]"}`} key={props.key} onClick={props.onClick}>
-{props.tag}
-  </button>
-  )
-}
+  return (
+    <button
+      className={`rounded-[4px] border w-6 h-6 text-xs font-medium ${
+        props.active
+          ? "bg-[#5932ea] text-white border-[#5932ea]"
+          : "bg-[#f5f5f5] text-[#404b52] border-[#eeeeee]"
+      }`}
+      key={props.key}
+      onClick={props.onClick}
+    >
+      {props.tag}
+    </button>
+  );
+};

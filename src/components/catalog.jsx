@@ -32,7 +32,7 @@ export default function Catalog() {
           }`}
           key={index}
         >
-          <div className="icon-div h-16 aspect-square bg-gradient-to-b from-[#d3ffe7] to-[#effff6] rounded-full flex justify-center items-center">
+          <div className="icon-div h-20 aspect-square bg-gradient-to-b from-[#d3ffe7] to-[#effff6] rounded-full flex justify-center items-center">
             <img src={datum.icon} className="w-3/6 h-3/6 object-contain object-center"/>
           </div>
           <div className="flex flex-col items-start sm:items-center lg:items-start leading-8">

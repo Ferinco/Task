@@ -4,6 +4,7 @@ import { FormInput } from "../components/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { useState } from "react";
+import { Loader } from "../components/Loader";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -36,11 +37,11 @@ export default function LoginPage() {
           Login into your account
         </p>
         <form onSubmit={handleLogin}>
-          <div className="flex flex-col gap-4 mt-8">
+          <div className="flex flex-col gap-6 mt-8">
             <FormInput
-              placeholder="info@pearmonie.test"
+              placeholder="emilys"
               name="email"
-              label="Email Id:"
+              label="Username:"
               icon="/images/mail-icon.png"
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -53,7 +54,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <a
-              className="text-custom-blue underline text-sm font-normal flex self-end"
+              className="text-custom-blue underline text-sm font-normal flex self-end -mt-2"
               href="/"
             >
               Forgot password?
@@ -62,7 +63,7 @@ export default function LoginPage() {
           <div className="flex flex-col mt-7">
             <Button
               deep
-              title="Login now"
+              title={isLoading ? <Loader/> : "Login now"}
               full
               type="submit"
               disabled={isLoading}

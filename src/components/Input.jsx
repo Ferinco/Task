@@ -4,10 +4,10 @@ export const FormInput = (props) => {
       <label htmlFor={props.name} className="text-shadow-custom">
         {props.label}
       </label>
-      <div className="w-full h-[50.49px] bg-[#EEEE] flex flex-row justify-between pl-7 rounded-lg shadow-custom">
+      <div className="w-full h-[50.49px] bg-[#EEEE] flex flex-row justify-between pl-5 rounded-lg shadow-custom">
         <input
           placeholder={props.placeholder}
-          className="bg-transparent outline-none placeholder:text-custom-grey placeholder:text-sm"
+          className="bg-transparent outline-none placeholder:text-custom-grey placeholder:text-sm shrink w-2/3 sm:w-auto"
           name={props.name}
           type={props.type}
           onChange={props.onChange}

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Navigate } from "react-router-dom";
 
 const initialState = {
   isAuthenticated: false,
@@ -7,6 +6,7 @@ const initialState = {
   user: null,
   error: null,
 };
+
 
 //thunk for user login
 export const loginUser = createAsyncThunk(
@@ -75,7 +75,7 @@ export const initializeAuth = createAsyncThunk(
   }
 );
 
-
+//reducers and extra reducers to manage states
 const authSlice = createSlice({
   name: "auth",
   initialState,

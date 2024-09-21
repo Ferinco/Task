@@ -10,6 +10,8 @@ const initialState = {
   pages: null  
 };
 
+
+//thunk to fetch users' data
 export const fetchAllUsers = createAsyncThunk(
   "users/fetchAllUsers",
   async ({ limit, skip }, { rejectWithValue }) => {
