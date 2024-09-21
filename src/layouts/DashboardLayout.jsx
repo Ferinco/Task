@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/sidebar";
 import { useEffect } from "react";
 import { initializeAuth } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
+import Sidebar from "../components/sidebar";
 
 export default function DashboardLayout() {
   const dispatch = useDispatch()
