@@ -8,6 +8,7 @@ export default {
     extend: {
       screens: {
         'xs': '480px', // Custom width for xs screen size
+        'xxs': '380px', // Custom width for xxs screen size
       },
       boxShadow: {
         'custom': '0 4px 4px rgba(0, 0, 0, 0.25)',

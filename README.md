@@ -27,6 +27,11 @@ For this project, I utilized React.js with Vite for fast development, Tailwind C
    npm run dev
    ```
 
+4. **Run test:**
+   ```bash
+   npm test
+   ```
+
 ### Access/Authentication
 
 To gain access to the user dashboard, you have to sign in with 

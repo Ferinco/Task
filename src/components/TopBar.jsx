@@ -9,9 +9,8 @@ export default function TopBar(props) {
   const handleToggle = () => {
     dispatch(toggleMenu());
   };
-
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
-  console.log(isMenuOpen);
+  
   return (
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full">
       <h4 className="text-black text-2xl font-medium mr-auto sm:mr-0">

@@ -43,11 +43,11 @@ export default function Catalog() {
               {datum.figure}
             </h3>
             {datum.increase === true ? (
-              <div className="text-xs text-[#292d32] flex items-center absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0"><img src="/images/green-arrow.png"/><span className="font-bold text-xs text-[#00ac4f] mr-1 ml-1">16%</span> this month</div>
+              <div className="text-xs text-[#292d32] flex items-center xxs:absolute sm:relative right-0  pr-10 sm:pr-0 xxs:mt-8 sm:mt-0"><img src="/images/green-arrow.png"/><span className="font-bold text-xs text-[#00ac4f] mr-1 ml-1">16%</span> this month</div>
             ) : datum.increase === false ? (
-              <div className="text-xs text-[#292d32] flex items-center absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0"><img src="/images/red-arrow.png"/><span className="font-bold text-xs text-[#d0004b] mr-1 ml-1">1%</span> this month</div>
+              <div className="text-xs text-[#292d32] flex items-center xxs:absolute sm:relative right-0  pr-10 sm:pr-0 xxs:mt-8 sm:mt-0"><img src="/images/red-arrow.png"/><span className="font-bold text-xs text-[#d0004b] mr-1 ml-1">1%</span> this month</div>
             ) : (
-              <div className="flex absolute sm:relative right-0  pr-10 sm:pr-0 mt-8 sm:mt-0">
+              <div className="flex xxs:absolute sm:relative right-0  pr-10 sm:pr-0  xxs:mt-8 sm:mt-0">
                 {
                     [...Array(5)].map((active, index)=> (
                        <img src={`images/active-${index+1}.png`} key={index} className={index != 0 && "-ml-2"}/> 

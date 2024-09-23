@@ -39,7 +39,7 @@ export default function ListBox() {
           <p className="text-black font-semibold text-[22px]">All Users</p>
           <p className="text-sm font-normal text-[#16c098]">Active Members</p>
         </div>
-        <div className="md:ml-auto flex gap-3">
+        <div className="md:ml-auto flex flex-col xs:flex-row gap-3">
           <SearchInput styles="bg-[#fafbff]" size="placeholder:text-xs" />
           <SelectField />
         </div>

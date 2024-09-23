@@ -51,7 +51,6 @@ export const initializeAuth = createAsyncThunk(
           return rejectWithValue(error.message || "Failed to fetch user info");
         }
         const data = await response.json();
-        console.log(data);
         return {
           isAuthenticated: true,
           user: data,

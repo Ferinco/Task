@@ -22,11 +22,9 @@ export const fetchAllUsers = createAsyncThunk(
         return rejectWithValue(error.message || "Failed to fetch users");
       }
       const data = await response.json();
-      console.log(data)
       return data;
 
     } catch (error) {
-      console.error("Network Error:", error);
       return rejectWithValue(error.response?.data || error.message);
     }
   }

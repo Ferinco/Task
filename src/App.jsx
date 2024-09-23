@@ -15,7 +15,6 @@ export default function App() {
   useEffect(() => {
     dispatch(initializeAuth());
   }, [dispatch]);
-  console.log(isAuthenticated)
   return (
     <BrowserRouter>
       <Suspense fallback={<Preloader />}>
