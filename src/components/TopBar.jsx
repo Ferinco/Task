@@ -10,7 +10,7 @@ export default function TopBar(props) {
     dispatch(toggleMenu());
   };
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
-  
+
   return (
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full">
       <h4 className="text-black text-2xl font-medium mr-auto sm:mr-0">

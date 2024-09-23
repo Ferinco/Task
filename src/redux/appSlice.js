@@ -1,5 +1,4 @@
 // I created this slice for general app states like sidemenu state, etc.
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
