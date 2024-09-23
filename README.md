@@ -49,7 +49,7 @@ To paginate/fetch new data, find the pagination buttons below the users' data ta
 To logout, click on the user's tab in the menubar/ sidebar to show the logout button.
 
 
-### Design 
+### Ui Design 
 
- *`https://oluwaferanmi-task.vercel.app/`*
+ *`https://www.figma.com/community/file/1412453542472706450`*
 
