@@ -44,8 +44,8 @@ export default function ListBox() {
           <SelectField />
         </div>
       </div>
-      <div className="overflow-x-auto xl:overflow-x-hidden">
-        <table className="w-full relative min-w-[1100px]  md:min-w-[900px] min-h-[500px]">
+      <div className="overflow-x-auto xl:overflow-x-hidden table-div">
+        <table className="w-full relative min-w-[1100px]  md:min-w-[920px] min-h-[500px]">
           <thead className="">
             <tr className="text-left">
               {tableHeaders.map((header, index) => (

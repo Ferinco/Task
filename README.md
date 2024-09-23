@@ -14,7 +14,7 @@ For this project, I utilized React.js with Vite for fast development, Tailwind C
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Ferinco/oluwaferanmi-task.git
-   cd task
+   cd oluwaferanmi-task
    ```
 
 2. **Install dependencies:**
