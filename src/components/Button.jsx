@@ -24,7 +24,7 @@ export const StatusButton = (props) => {
     <button
       className={`text-sm font-medium border rounded-[4px] w-20 h-7 ${
         props.active
-          ? "text-[#008767] bg-[#00b087] border-[#008767]"
+          ? "text-[#008767] bg-[#16C098] border-[#008767] bg-opacity-[38%]"
           : "text-[#df0404] bg-[#ffc5c5] border-[#df0404]"
       }`}
     >

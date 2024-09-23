@@ -54,7 +54,8 @@ const usersSlice = createSlice({
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = "Failed to fetch users";
+        state.users = [];
       });
   },
 });

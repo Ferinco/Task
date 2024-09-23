@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-//thunk to initialize token check or cached user
+//to check if user has already been logged in before
 export const initializeAuth = createAsyncThunk(
   "auth/initializeAuth",
   async (_, { rejectWithValue }) => {
@@ -46,15 +46,12 @@ export const initializeAuth = createAsyncThunk(
             Authorization: `Bearer ${token}`,
           },
         });
-
         if (!response.ok) {
           const error = await response.json();
           return rejectWithValue(error.message || "Failed to fetch user info");
         }
-
         const data = await response.json();
         console.log(data);
-
         return {
           isAuthenticated: true,
           user: data,
