@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SearchInput } from "./Input";
+import { SearchInput } from "./resusables/Input";
 import { toggleMenu } from "../redux/appSlice";
 
 export default function TopBar(props) {

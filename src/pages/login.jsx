@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Button } from "../components/Button";
-import { FormInput } from "../components/Input";
+import { Button } from "../components/resusables/Button";
+import { FormInput } from "../components/resusables/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { useState } from "react";
-import { Loader } from "../components/Loader";
+import { Loader } from "../components/resusables/Loader";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");

@@ -1,3 +1,4 @@
+//general form button
 export const Button = (props) => {
   return (
     <button
@@ -33,6 +34,8 @@ export const StatusButton = (props) => {
   );
 };
 
+
+//for pagination
 export const PaginatorButton = (props) => {
   return (
     <button

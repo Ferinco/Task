@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers } from "../redux/usersSlice";
-import { SearchInput } from "./Input";
-import { PaginatorButton, StatusButton } from "./Button";
-import { SelectField } from "./Select";
-import { Loader } from "./Loader";
+import { SearchInput } from "./resusables/Input";
+import { PaginatorButton, StatusButton } from "./resusables/Button";
+import { SelectField } from "./resusables/Select";
+import { Loader } from "./resusables/Loader";
 
 export default function ListBox() {
   const [active, setActive] = useState(0);
@@ -13,12 +13,12 @@ export default function ListBox() {
     (state) => state.users
   );
 
-  //fetch the first 8 user data
+  //fetch users
   useEffect(() => {
     dispatch(fetchAllUsers({ limit: 8, skip: 0 }));
   }, [dispatch]);
 
-  //
+
   const paginateData = (skipping) => {
     dispatch(fetchAllUsers({ limit: 8, skip: skipping }));
   };
@@ -32,7 +32,6 @@ export default function ListBox() {
     "Status",
   ];
 
-  console.log(pages);
   return (
     <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 p-4 sm:p-6 2xl:p-9">
       <div className="flex flex-col md:flex-row md:items-center gap-3">
@@ -45,7 +44,7 @@ export default function ListBox() {
           <SelectField />
         </div>
       </div>
-      <div className="overflow-x-auto lg:overflow-x-hidden">
+      <div className="overflow-x-auto xl:overflow-x-hidden">
         <table className="w-full relative min-w-[1100px]  md:min-w-[920px] min-h-[500px]">
           <thead className="">
             <tr className="text-left">
