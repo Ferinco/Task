@@ -30,7 +30,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 ${
+      className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 shadow-[0_10px_60px_rgba(226,236,249,0.5)] ${
         isMenuOpen ? "-ml-0" : "-ml-[400px]"
       }`}
     >

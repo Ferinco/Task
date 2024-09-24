@@ -5,7 +5,7 @@ import ListBox from "../components/List";
 
 export default function Dashboard() {
   return (
-    <div className="w-full h-full flex flex-col gap-8 mt-32 sm:mt-16">
+    <div className="w-full h-full flex flex-col gap-8 mt-32 sm:mt-20">
       <Catalog/>
       <ListBox/>
     </div>

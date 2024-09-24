@@ -33,7 +33,7 @@ export default function ListBox() {
   ];
 
   return (
-    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 p-4 sm:p-6 2xl:p-9">
+    <div className="bg-white border border-white w-full h-fit rounded-3xl overflow-hidden flex flex-col gap-10 p-4 sm:p-6 2xl:p-9 shadow-[0_10px_60px_rgba(226,236,249,0.5)]">
       <div className="flex flex-col md:flex-row md:items-center gap-3">
         <div>
           <p className="text-black font-semibold text-[22px]">All Users</p>

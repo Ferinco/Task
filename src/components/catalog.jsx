@@ -20,7 +20,7 @@ export default function Catalog() {
     },
   ];
   return (
-    <div className="border border-white bg-white h-auto w-full rounded-3xl grid sm:grid-cols-3 gap-7 sm:gap-0 items-center p-4 sm:p-6 md:p-9">
+    <div className="border border-white bg-white h-auto w-full rounded-3xl grid sm:grid-cols-3 gap-7 sm:gap-0 items-center p-4 sm:p-6 md:p-9 shadow-[0_10px_60px_rgba(226,236,249,0.5)]">
       {data.map((datum, index) => (
         <div
           className={`flex sm:flex-col lg:flex-row gap-5 items-center lg:items-start justify-start justify-self-start lg:justify-self-auto ${
