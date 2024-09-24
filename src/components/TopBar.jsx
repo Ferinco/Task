@@ -18,7 +18,7 @@ export default function TopBar(props) {
       </h4>
       <SearchInput
         size="placeholder:text-sm"
-        styles="bg-white sm:ml-auto mr-auto sm:mr-0 shadow-[0_10px_60px_rgba(226,236,249,0.5)]"
+        styles="bg-white sm:ml-auto mr-auto sm:mr-0"
       />
       <div className="absolute justify-end flex sm:hidden">
         <div
