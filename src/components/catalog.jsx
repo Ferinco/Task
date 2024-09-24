@@ -25,7 +25,7 @@ export default function Catalog() {
         <div
           className={`flex sm:flex-col lg:flex-row gap-5 items-center lg:items-start justify-start justify-self-start lg:justify-self-auto ${
             index === 1
-              ? "justify-center lg:border-r lg:border-l sm:justify-self-center lg:justify-self-auto"
+              ? "justify-center border-t border-b sm:border-t-0 sm:border-b-0 py-5 sm:py-0 w-full lg:border-r lg:border-l sm:justify-self-center lg:justify-self-auto"
               : index === 2
               ? "justify-center sm:justify-self-end lg:justify-self-auto"
               : ""
@@ -35,7 +35,7 @@ export default function Catalog() {
           <div className="icon-div h-20 aspect-square bg-gradient-to-b from-[#d3ffe7] to-[#effff6] rounded-full flex justify-center items-center">
             <img src={datum.icon} className="w-3/6 h-3/6 object-contain object-center"/>
           </div>
-          <div className="flex flex-col items-start sm:items-center lg:items-start leading-8">
+          <div className="flex flex-col items-start sm:items-center lg:items-start leading-8 mr-auto sm:mr-0">
             <p className="text-sm font-normal text-[#acacac] capitalize">
               {datum.title}
             </p>

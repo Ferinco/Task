@@ -2,13 +2,13 @@
 export const Button = (props) => {
   return (
     <button
-      className={`px-5 py-2 rounded-lg border h-[50.49px] text-base font-semibold shadow-custom transition-all duration-150 flex justify-center items-center ${
+      className={`px-5 py-2 rounded-lg border h-[50.49px] text-base font-semibold transition-all duration-150 flex justify-center items-center ${
         props.deep
-          ? "bg-custom-blue text-white border-custom-blue hover:bg-[#161C59]"
+          ? "bg-custom-blue text-white border-custom-blue hover:bg-[#161C59] shadow-custom"
           : "bg-transparent text-custom-blue border-custom-blue hover:bg-custom-blue hover:text-white"
       } ${props.full ? "w-full" : "w-fit"} ${
         props.disabled
-          ? "bg-opacity-50 border-opacity-10 cursor-not-allowed"
+          ? "bg-opacity-50 border-opacity-10 cursor-not-allowed hover:bg-opacity-50"
           : "bg-opacity-100"
       }`}
       type={props.type}

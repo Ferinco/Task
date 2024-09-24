@@ -8,8 +8,9 @@ export default function Sidebar() {
   const dispatch = useDispatch();
   const { user, isLoading } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
-  const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
+  const {isMenuOpen} = useSelector((state) => state.app);
 
+  //sidebar tabs
   const tabs = [
     {
       icon: "/images/user-icon.png",
@@ -21,6 +22,7 @@ export default function Sidebar() {
     },
   ];
 
+  //logout function
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -28,7 +30,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-30 transition-all duration-150 ${
+      className={`w-[306px] sm:w-24 xl:w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 ${
         isMenuOpen ? "-ml-0" : "-ml-[400px]"
       }`}
     >
@@ -73,6 +75,7 @@ export default function Sidebar() {
           ))}
         </div>
 
+
         <div className="CAT-card p-6 flex sm:hidden xl:flex flex-col justify-center gap-5 items-center text-center bg-gradient-to-r from-[#EAABF0] to-[#4623E9] rounded-[20px] mt-auto">
           <p className="text-sm font-semibold text-white">
             Upgrade to PRO to get access to all feautures!
@@ -84,8 +87,8 @@ export default function Sidebar() {
         <div className="sm:mt-auto xl:mt-0 w-full">
           <div className="flex w-full items-center gap-3">
             <div className="image-div w-10 aspect-square rounded-full">
-              {/* <img src={user?.image}/> */}
-              <img src="/images/user-image.png" />
+              <img src={user?.image} />
+              {/* <img src="/images/user-image.png" /> */}
             </div>
             <div className="block sm:hidden xl:block">
               <h6 className="text-black font-medium text-sm">
@@ -113,7 +116,6 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-  
     </div>
   );
 }

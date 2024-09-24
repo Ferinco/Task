@@ -1,13 +1,13 @@
-export const Loader = () => {
+export const Loader = (props) => {
     return(
         <svg
 xmlns="http://www.w3.org/2000/svg"
-width="2em"
-height="2em"
+width={props.size}
+height={props.size}
 viewBox="0 0 24 24"
 >
 <path
-  fill="black"
+  fill={props.color}
   d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z"
   transform="matrix(0 0 0 0 12 12)"
 >

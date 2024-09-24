@@ -4,10 +4,8 @@ import Catalog from "../components/catalog";
 import ListBox from "../components/List";
 
 export default function Dashboard() {
-    const user = useSelector((state)=> state.auth.user)
   return (
-    <div className="w-full h-full flex flex-col gap-8">
-      <TopBar user={user}/>
+    <div className="w-full h-full flex flex-col gap-8 mt-32 sm:mt-16">
       <Catalog/>
       <ListBox/>
     </div>

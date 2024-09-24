@@ -12,7 +12,7 @@ export default function TopBar(props) {
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full">
+    <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full sm:w-[calc(100vw-100px)] xl:w-[calc(100vw-306px)] px-5 sm:px-10 py-5 -mt-5 z-30 -ml-5 sm:-ml-10 fixed bg-[#fafbff]">
       <h4 className="text-black text-2xl font-medium mr-auto sm:mr-0">
         Hello {props?.user?.firstName} 👋🏼,
       </h4>

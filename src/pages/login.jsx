@@ -33,7 +33,7 @@ export default function LoginPage() {
         <div className="h-full w-full"></div>
       </div>
       <div className="h-full col-span-12  md:col-span-5 lg:col-span-4 px-7 sm:px-16 md:px-7 flex flex-col justify-center gap-7">
-        <p className="text-custom-grey font-semibold text-base text-center text-shadow-custom">
+        <p className="text-custom-grey font-semibold text-base text-center">
           Login into your account
         </p>
         <form onSubmit={handleLogin}>
@@ -63,7 +63,7 @@ export default function LoginPage() {
           <div className="flex flex-col mt-7">
             <Button
               deep
-              title={isLoading ? <Loader/> : "Login now"}
+              title={isLoading ? <Loader color={"white"} size="2em"/> : "Login now"}
               full
               type="submit"
               disabled={isLoading}

@@ -1,10 +1,10 @@
 export const FormInput = (props) => {
   return (
     <div className="w-full flex flex-col h-[84.82px] justify-between text-custom-grey text-base">
-      <label htmlFor={props.name} className="text-shadow-custom">
+      <label htmlFor={props.name} className="">
         {props.label}
       </label>
-      <div className="w-full h-[50.49px] bg-[#EEEE] flex flex-row justify-between pl-5 rounded-lg shadow-custom">
+      <div className="w-full h-[50.49px] bg-[#EEEE] flex flex-row justify-between pl-5 rounded-lg">
         <input
           placeholder={props.placeholder}
           className="bg-transparent outline-none placeholder:text-custom-grey placeholder:text-sm shrink w-2/3 sm:w-auto"

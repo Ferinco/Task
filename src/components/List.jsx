@@ -57,7 +57,7 @@ export default function ListBox() {
           </thead>
           {isLoading ? (
             <div className="flex justify-center absolute grow w-full mt-[20%]">
-                <Loader />
+                <Loader size="2em" color="black"/>
 
             </div>
           ) : (
