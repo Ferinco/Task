@@ -35,7 +35,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 shadow-[0_10px_60px_rgba(226,236,249,0.5)] ${
+      className={`bg-white h-screen p-5 fixed  sm:block z-50 transition-all duration-150 shadow-[0_10px_60px_rgba(226,236,249,0.5)] ${
         isMenuOpen ? "-ml-0" : "-ml-[400px]"
       }
       ${miniMenu ? "w-[100px]": "w-[306px]"}
@@ -82,7 +82,7 @@ export default function Sidebar() {
           ))}
         </div>
         <div
-          className={`mini-menu-bar h-7 w-7 bg-black rounded-full flex justify-center items-center ml-auto cursor-pointer  ${miniMenu ? "-mr-9" : "-mr-12"}`}
+          className={`mini-menu-bar h-7 w-7 bg-black rounded-full flex justify-center items-center ml-auto cursor-pointer shrink-0  ${miniMenu ? "-mr-9" : "-mr-12"}`}
           onClick={handleToggle}
         >
           <img src="/images/white-arrow.png" className={miniMenu ? "rotate-180 transition-all duration-500" : "rotate-0 transition-all duration-500"}/>
