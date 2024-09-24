@@ -35,8 +35,8 @@ export default function Sidebar() {
 
   return (
     <div
-      className={` bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 shadow-[0_10px_60px_rgba(226,236,249,0.5)] ${
-        isMenuOpen ? "-ml-0 w-[306px]" : "-ml-[400px] w-[306px]"
+      className={`w-[306px] bg-white h-screen p-5 fixed sm:-ml-0 sm:block z-50 transition-all duration-150 shadow-[0_10px_60px_rgba(226,236,249,0.5)] ${
+        isMenuOpen ? "-ml-0" : "-ml-[400px]"
       }
       ${miniMenu ? "w-[100px]": "w-[306px]"}
       `}
