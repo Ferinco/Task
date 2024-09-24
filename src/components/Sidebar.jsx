@@ -82,7 +82,7 @@ export default function Sidebar() {
           ))}
         </div>
         <div
-          className={`mini-menu-bar h-7 w-7 bg-black rounded-full flex justify-center items-center ml-auto cursor-pointer shrink-0  ${miniMenu ? "-mr-9" : "-mr-12"}`}
+          className={`mini-menu-bar h-7 w-7 bg-black/70 rounded-full flex justify-center items-center ml-auto cursor-pointer shrink-0  ${miniMenu ? "-mr-9" : "-mr-12"}`}
           onClick={handleToggle}
         >
           <img src="/images/white-arrow.png" className={miniMenu ? "rotate-180 transition-all duration-500" : "rotate-0 transition-all duration-500"}/>

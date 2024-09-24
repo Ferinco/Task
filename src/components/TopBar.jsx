@@ -9,10 +9,10 @@ export default function TopBar(props) {
   const handleToggle = () => {
     dispatch(toggleMenu());
   };
-  const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
+  const {isMenuOpen, miniMenu} = useSelector((state) => state.app);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full xl:w-[calc(100vw-306px)] px-5 sm:px-10 py-5 -mt-5 z-30 -ml-5 sm:-ml-10 fixed bg-[#fafbff]">
+    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-0 h-auto items-end justify-between w-full px-5 py-5 -mt-5 z-30 fixed bg-[#fafbff] -ml-5 ${miniMenu ? "xl:w-[calc(100vw-100px)] sm:px-20 -ml-5 sm:-ml-20": "xl:w-[calc(100vw-306px)] sm:px-10 sm:-ml-10"}` }>
       <h4 className="text-black text-2xl font-medium mr-auto sm:mr-0">
         Hello {props?.user?.firstName} 👋🏼,
       </h4>
@@ -20,7 +20,7 @@ export default function TopBar(props) {
         size="placeholder:text-sm"
         styles="bg-white sm:ml-auto mr-auto sm:mr-0"
       />
-      <div className="absolute justify-end flex sm:hidden">
+      <div className="absolute sm:relative sm:ml-10 justify-end flex lg:hidden">
         <div
           className={`menu-toggle ${
             isMenuOpen
