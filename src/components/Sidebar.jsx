@@ -58,11 +58,11 @@ export default function Sidebar() {
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className={`flex flex-row h-auto w-[250px] items-center rounded-lg transition-all duration-200 ${
+              className={`flex flex-row w-[250px] items-center rounded-lg transition-all duration-200 ${
                 index === 0
                   ? "bg-[#5932ea] text-white"
                   : "text-[#9197b3] bg-transparent"
-              } ${miniMenu ? "w-[40px] h-[40px] p-0 justify-center" : "p-3 w-[250px] justify-between"}`}
+              } ${miniMenu ? "w-[40px] h-[40px] p-0 justify-center" : "h-auto p-3 w-[250px] justify-between"}`}
             >
               <div className="flex items-center gap-2">
                 <img src={tab.icon} className="w-6 h-6" />
