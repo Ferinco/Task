@@ -11,11 +11,12 @@ export default function DashboardLayout() {
     dispatch(initializeAuth());
   }, [dispatch]);
   const user = useSelector((state) => state.auth.user);
+  const { miniMenu } = useSelector((state) => state.app);
 
   return (
     <div className="flex sm:ml-[9px] bg-[#fafbff]">
       <Sidebar />
-      <div className="w-full sm:w-[calc(100vw-100px)] xl:w-[calc(100vw-306px)] px-5 sm:px-10 py-5 ml-auto left-0 h-fit sm:min-h-screen">
+      <div className={`w-full px-5 py-5 ml-auto left-0 h-fit sm:min-h-screen transition-all duration-200 ${miniMenu ? "xl:w-[calc(100vw-100px)] sm:px-20": "xl:w-[calc(100vw-306px)] sm:px-10"}`}>
         <TopBar user={user} />
         <Outlet />
       </div>

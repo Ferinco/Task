@@ -24,7 +24,6 @@ export const loginUser = createAsyncThunk(
       }
       const data = await response.json();
       localStorage.setItem("token", data.accessToken);
-      console.log(data);
       return data;
     } catch (error) {
       console.error("Network Error:", error);
