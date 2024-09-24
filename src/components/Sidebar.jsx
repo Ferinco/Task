@@ -58,11 +58,11 @@ export default function Sidebar() {
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className={`flex flex-row h-auto w-[250px] items-center p-3 rounded-lg transition-all duration-200 ${
+              className={`flex flex-row h-auto w-[250px] items-center rounded-lg transition-all duration-200 ${
                 index === 0
                   ? "bg-[#5932ea] text-white"
                   : "text-[#9197b3] bg-transparent"
-              } ${miniMenu ? "w-[40px] h-[40px] p-0 justify-center" : "w-[250px] justify-between"}`}
+              } ${miniMenu ? "w-[40px] h-[40px] p-0 justify-center" : "p-3 w-[250px] justify-between"}`}
             >
               <div className="flex items-center gap-2">
                 <img src={tab.icon} className="w-6 h-6" />
@@ -88,7 +88,7 @@ export default function Sidebar() {
           <img src="/images/white-arrow.png" className={miniMenu ? "rotate-180 transition-all duration-500" : "rotate-0 transition-all duration-500"}/>
         </div>
 
-        <div className={`CAT-card p-6 flex flex-col justify-center gap-5 items-center text-center bg-gradient-to-r from-[#EAABF0] to-[#4623E9] rounded-[20px] mt-auto transition-all duration-200 ${miniMenu ? "opacity-0 w-[40px]" : "opacity-100 flex w-[250px]"}`}>
+        <div className={`CAT-card p-6 flex flex-col justify-center gap-5 items-center text-center bg-gradient-to-r from-[#EAABF0] to-[#4623E9] rounded-[20px] mt-auto transition-all duration-200 ${miniMenu ? "opacity-0 w-[40px] h-6" : "opacity-100 flex w-[250px] h-auto"}`}>
           <p className="text-sm font-semibold text-white">
             Upgrade to PRO to get access to all feautures!
           </p>
@@ -110,7 +110,7 @@ export default function Sidebar() {
               </p>
             </div>
             <img
-              className={`ml-auto block transition-all duration-150 cursor-pointer z-20 ${
+              className={`block transition-all duration-150 cursor-pointer z-20 ${
                 show && "rotate-180"
               } ${miniMenu ? "ml-0" : "ml-auto"}`}
               src="/images/arrow-down.png"
