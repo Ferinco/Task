@@ -49,11 +49,14 @@ export const initializeAuth = createAsyncThunk(
           const error = await response.json();
           return rejectWithValue(error.message || "Failed to fetch user info");
         }
+        
         const data = await response.json();
-        return {
-          isAuthenticated: true,
-          user: data,
-        };
+          return {
+            isAuthenticated: true,
+            user: data,
+          };
+
+        
       } else {
         return {
           isAuthenticated: false,
@@ -85,7 +88,7 @@ const authSlice = createSlice({
     builder
       .addCase(initializeAuth.pending, (state) => {
         state.isLoading = true;
-        state.isAuthenticated = true;
+        state.isAuthenticated = false;
 
       })
       .addCase(initializeAuth.fulfilled, (state, action) => {
